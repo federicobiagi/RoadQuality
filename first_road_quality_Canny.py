@@ -5,6 +5,8 @@ from cv2 import imshow
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+
 print("OpenCV version is: " + cv2.__version__)
 
 #video acquisition, cap means captured
@@ -31,6 +33,7 @@ while cap.isOpened():
     #read method: grabs, decodes and return the next video frame. The image frame is saved in "frame". The return value (false as an example
     # if no image is captured) is saved in "valid".
     #https://docs.opencv.org/3.4/d8/dfe/classcv_1_1VideoCapture.html
+    
     valid, frame = cap.read()
 
     height, width, _ = frame.shape

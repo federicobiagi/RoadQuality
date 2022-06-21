@@ -9,7 +9,7 @@ import numpy as np
 print("OpenCV version is: " + cv2.__version__)
 
 
-cap = cv2.VideoCapture("D:\Road_Videos\\Virb0462.m4v")
+cap = cv2.VideoCapture("D:\Road_Videos\\Road2.mp4")
 
 # img = cv2.imread("test_data\\first_example.png")
 
@@ -33,13 +33,20 @@ while cap.isOpened():
     #frame = frame[round(height / 1.4):height, round(width / 4):round(width / 4) * 3, :]
     fps = cap.get(5)
     gray_frame = frame[:, :, 0] + frame[:, :, 1] + frame[:, :, 2]
-   # viewer.clear()
+
+    #DENOISE
+    #the first parameter is the source image to denoise, the second parameter indicates the size of the filter, the last parameter means
+    # 0 = constant border, it is used to specify the border type of the image
+    gray_frame = cv2.GaussianBlur(gray_frame,(5,5),0)
+
+
+    #viewer.clear()
     #viewer.hist(gray_frame.flatten(), bins=255)
     #fig.canvas.draw()
     #plt.pause(0.08)
 
     if valid:
-        th,edge = cv2.threshold(gray_frame,0,255,cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        th,edge = cv2.threshold(gray_frame,0,255,cv2.THRESH_OTSU)
        
         cv2.imshow('original', frame)
         cv2.imshow('edge', edge)
