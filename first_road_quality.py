@@ -35,7 +35,7 @@ while cap.isOpened():
 
     height, width, _ = frame.shape
 
-    # CROP
+    #crop
     
     #frame = frame[round(height / 1.4):height, round(width / 4):round(width / 4) * 3, :]
 
