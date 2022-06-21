@@ -47,7 +47,7 @@ while cap.isOpened():
     gray_frame = frame[:, :, 0] + frame[:, :, 1] + frame[:, :, 2]
 
     #HISTOGRAM PART
-   # viewer.clear()
+    #viewer.clear()
     #viewer.hist(gray_frame.flatten(), bins=255)
     #fig.canvas.draw()
     #plt.pause(0.08)
