@@ -8,6 +8,20 @@ import numpy as np
 
 print("OpenCV version is: " + cv2.__version__)
 
+def PreWitt_Mask3x3(frame):
+    #Prewitt Masks
+    Kx = np.array([[1,1,1],[0,0,0],[-1,-1,-1]])
+    Ky = np.array([[-1,0,1],[-1,0,1],[-1,0,1]])
+
+    #Apply the filter on the gray scale image, the -1 value mantains the same depth as the original image
+    filteredX = cv2.filter2D(frame,-1,Kx)
+    filteredY = cv2.filter2D(frame,-1,Ky)
+
+    filtered = filteredX + filteredY    
+    return filtered
+
+
+
 
 cap = cv2.VideoCapture("D:\Road_Videos\\Road2.mp4")
 
@@ -46,11 +60,8 @@ while cap.isOpened():
     #plt.pause(0.08)
 
     if valid:
-        #the first parameter needs to be a gray scale image, the second parameter determines the threshold value,
-        #the third one is for the maximum value of the see with the threshold, the type is used to set optional 
-        #thresholding types liek otsu. The method determines the best threshold to use between the two
-        th,edge = cv2.threshold(gray_frame, thresh= 0, maxval=255,type = cv2.THRESH_OTSU)
        
+        edge = PreWitt_Mask3x3(gray_frame)
         cv2.imshow('original', frame)
         cv2.imshow('edge', edge)
         cv2.waitKey(5)
