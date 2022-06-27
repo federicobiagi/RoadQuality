@@ -48,7 +48,7 @@ while cap.isOpened():
     if valid:
         #the first parameter needs to be a gray scale image, the second parameter determines the threshold value,
         #the third one is for the maximum value of the see with the threshold, the type is used to set optional 
-        #thresholding types liek otsu. The method determines the best threshold to use between the two
+        #thresholding types liek otsu. The method determines the best threshold to use between the two specified thresholds.
         th,edge = cv2.threshold(gray_frame, thresh= 0, maxval=255,type = cv2.THRESH_OTSU)
        
         cv2.imshow('original', frame)
