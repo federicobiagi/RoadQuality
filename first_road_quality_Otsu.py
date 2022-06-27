@@ -34,10 +34,16 @@ while cap.isOpened():
     fps = cap.get(5)
     gray_frame = frame[:, :, 0] + frame[:, :, 1] + frame[:, :, 2]
 
+    #normalization
+    #frame = frame.astype("float32")
+    #grayframe = frame[:,:,0] + frame[:,:,1] + frame[:,:,2]
+    #grayframe = grayframe / 3
+    #grayframe = grayframe.astype("uint8")
+   
     #DENOISE
     #the first parameter is the source image to denoise, the second parameter indicates the size of the filter, the last parameter means
     # 0 = constant border, it is used to specify the border type of the image
-    gray_frame = cv2.GaussianBlur(gray_frame,(5,5),0)
+    #gray_frame = cv2.GaussianBlur(gray_frame,(5,5),0)
 
 
     #viewer.clear()

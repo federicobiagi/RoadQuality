@@ -51,7 +51,7 @@ while cap.isOpened():
     #DENOISE
     #the first parameter is the source image to denoise, the second parameter indicates the size of the filter, the last parameter means
     # 0 = constant border, it is used to specify the border type of the image
-    gray_frame = cv2.GaussianBlur(gray_frame,(5,5),0)
+    #gray_frame = cv2.GaussianBlur(gray_frame,(5,5),0)
 
 
     #viewer.clear()
@@ -61,7 +61,7 @@ while cap.isOpened():
 
     if valid:
        
-        edge = PreWitt_Mask3x3(gray_frame)
+        edge = PreWitt_Mask3x3(frame)
         cv2.imshow('original', frame)
         cv2.imshow('edge', edge)
         cv2.waitKey(5)
